@@ -10,6 +10,7 @@
             <th scope="col">Titolo</th>
             <th scope="col">Descrizione</th>
             <th scope="col">Url</th>
+            <th scope="col">Azioni</th>
             </tr>
         </thead>
         <tbody>
@@ -19,6 +20,11 @@
                     <td>{{$project->title}}</td>
                     <td>{{$project->description}}</td>
                     <td>{{$project->repository_url}}</td>
+                    <td>
+                        <a href="{{ route('admin.projects.show', ['project' => $project->slug])}}" class="btn btn-success"> Dettagli </a>
+                        <a href="{{ route('admin.projects.create')}}" class="btn btn-primary"> Nuovo </a>
+                    </td>
+
                 </tr>
                 
             @endforeach
