@@ -26,7 +26,7 @@
                     <td>
                         <a href="{{ route('admin.projects.show', ['project' => $project->slug])}}" class="btn btn-success"> Dettagli </a>
                         <button type="button" class="btn btn-danger" id="btnDelete" data-bs-toggle="modal" data-bs-target="#deleteModal" data-slug="{{ $project->slug }}" >
-                                Delete
+                                Cancella
                         </button>
                     </td>
 
