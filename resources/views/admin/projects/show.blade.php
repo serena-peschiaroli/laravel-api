@@ -15,7 +15,7 @@
             <div class="btn-wrapper">
                 <a href="{{route('admin.projects.index')}}" class="btn btn-primary">Indietro</a>
                 
-                <a href="" class="btn btn-primary"> Aggiorna</a>
+                <a href="{{route('admin.projects.edit', ['project'=>$project->slug])}}" class="btn btn-primary"> Aggiorna</a>
             </div>
         </div>
     </div>

@@ -11,8 +11,8 @@ class Project extends Model
     use HasFactory;
     protected $fillable= ['title', 'description', 'slug', 'repository_url' ];
     //mutaator
-    public function setTitleAttribute($title){
-        $this->attribute('title')->$title;
-        $this->attribute('slug')->Str::slug($title, '-');
+    public function setTitleAttribute($_title){
+        $this->attributes['title'] = $_title;
+        $this->attributes['slug'] = Str::slug($_title, '-');
     }
 }
