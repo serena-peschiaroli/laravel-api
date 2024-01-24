@@ -45,7 +45,7 @@ class ProjectController extends Controller
         $project->fill($form_input);
         $project->save();
 
-        return redirect()->route('admin.projects.show', ['project' => $project->slug]);
+        return redirect()->route('admin.projects.show', ['project' => $project->slug])->with('message', 'Record creato correttamente');
     }
 
     /**
@@ -81,7 +81,7 @@ class ProjectController extends Controller
     {
         $form_input = $request->validated();
         $project->update($form_input);
-        return redirect()->route('admin.projects.show', ['project'=> $project->slug]);
+        return redirect()->route('admin.projects.show', ['project'=> $project->slug])->with('message', 'Record aggiornato con successo');
     }
 
     /**
@@ -93,6 +93,6 @@ class ProjectController extends Controller
     public function destroy(Project $project)
     {
        $project->delete();
-       return redirect()->route('admin.projects.index');
+       return redirect()->route('admin.projects.index')->with('message', 'Record spostato nel cestino');
     }
 }

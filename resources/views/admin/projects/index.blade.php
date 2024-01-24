@@ -3,6 +3,11 @@
 @section('content')
 
 <div class="container">
+     @if (Session::has('message'))
+            <div class="alert alert-success">
+              {{ Session::get('message') }}
+            </div>
+     @endif
     <div class="mt-5 d-flex justify-content-end">
         <a href="{{ route('admin.projects.create')}}" class="btn btn-primary"> Nuovo </a>
     </div>
@@ -49,7 +54,7 @@
 
                 
                     <div class="modal-body">
-                        Vuoi cancellare questo record?
+                        Vuoi spostare questo record nel cestino?
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
