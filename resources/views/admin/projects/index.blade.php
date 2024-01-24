@@ -3,6 +3,9 @@
 @section('content')
 
 <div class="container">
+    <div class="mt-5 d-flex justify-content-end">
+        <a href="{{ route('admin.projects.create')}}" class="btn btn-primary"> Nuovo </a>
+    </div>
     <table class="table">
         <thead>
             <tr>
@@ -22,7 +25,9 @@
                     <td>{{$project->repository_url}}</td>
                     <td>
                         <a href="{{ route('admin.projects.show', ['project' => $project->slug])}}" class="btn btn-success"> Dettagli </a>
-                        <a href="{{ route('admin.projects.create')}}" class="btn btn-primary"> Nuovo </a>
+                        <button type="button" class="btn btn-danger" id="btnDelete" data-bs-toggle="modal" data-bs-target="#deleteModal" data-slug="{{ $project->slug }}" >
+                                Delete
+                        </button>
                     </td>
 
                 </tr>
@@ -30,7 +35,30 @@
             @endforeach
             
         </tbody>
-</table>
+    </table>
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="deleteModal">Conferma Cancellazione</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="deleteForm" action="{{ route('admin.projects.destroy', ['project'=>$project->slug]) }}" class="d-inline-block" method="POST">
+                    @csrf
+                    @method('DELETE')
+
+                
+                    <div class="modal-body">
+                        Vuoi cancellare questo record?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                        <button type="sumbit" class="btn btn-danger" id="confirmDelete">Conferma</button>
+                    </div>
+                </form>    
+            </div>
+        </div>
+    </div>
 </div>
     
 @endsection
