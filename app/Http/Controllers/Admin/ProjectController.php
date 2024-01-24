@@ -42,7 +42,6 @@ class ProjectController extends Controller
         $form_input = $request->validated();
         $project = new Project();
         $project->fill($form_input);
-        $project->slug = Str::slug($project->title, '-');
         $project->save();
 
         return redirect()->route('admin.projects.show', ['project' => $project->slug]);
@@ -65,9 +64,9 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Project $project)
     {
-        //
+        return view('admin.project.edit', compact('project'));
     }
 
     /**

@@ -29,4 +29,14 @@ class ProjectUpdateRequest extends FormRequest
             'repository_url' => 'nullable|url',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'title.required' => 'Il campo è obbligatorio',
+            'title.max' => 'Il titolo non deve essere più lungo di 255 caratteri.',
+            'title.unique' => 'Questo titolo è già stato usato',
+            'repository_url.url' => 'Questo campo deve contenere un URL valido',
+        ];
+    }
 }

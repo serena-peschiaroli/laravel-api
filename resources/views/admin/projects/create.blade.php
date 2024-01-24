@@ -13,7 +13,7 @@
             </div>
             <div class="mb-3">
                 <label for="repository_url" class="form-label">Url del progetto</label>
-                <input type="text" class="form-control" id="repository_url" name="repository_url"{{ old('repository_url') }}>
+                <input type="text" class="form-control" id="repository_url" name="repository_url" value="{{ old('repository_url') }}">
             </div>
             <div class="mb-3">
                 <label for="description" class="form-label">Descrizione</label>
