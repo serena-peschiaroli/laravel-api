@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Project;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProjectStoreRequest;
+use App\Http\Requests\ProjectUpdateRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -66,7 +67,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('admin.project.edit', compact('project'));
+        return view('admin.projects.edit', compact('project'));
     }
 
     /**
@@ -76,9 +77,11 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProjectUpdateRequest $request, Project $project)
     {
-        //
+        $form_input = $request->validated();
+        $project->update($form_input);
+        return redirect()->route('admin.projects.show', ['project'=> $project->slug]);
     }
 
     /**
