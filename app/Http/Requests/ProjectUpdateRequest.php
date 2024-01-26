@@ -32,6 +32,7 @@ class ProjectUpdateRequest extends FormRequest
             ],
             'description' => ['nullable'],
             'repository_url' => 'nullable|url',
+            'type_id' => ['nullable', 'numeric', 'exists:types,id'],
         ];
     }
 
