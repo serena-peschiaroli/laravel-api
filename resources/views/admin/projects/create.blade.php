@@ -22,6 +22,17 @@
                 @enderror
             </div>
             <div class="mb-3">
+                <label for="type_id"> Seleziola la tipologia</label>
+                <select name="type_id" id="type_id" class="form-select">
+                    <option @selected(old('type_id')) value="">Nessun tipo</option>
+                    @foreach ($types as $type)
+                        <option @selected(old('type_id') == $type->id) value="{{ $type->id}}">{{$type->name}}</option>
+                        
+                    @endforeach
+                </select>
+
+            </div>
+            <div class="mb-3">
                 <label for="description" class="form-label">Descrizione</label>
                 <textarea class="form-control" id="description" rows="3" name="description">{{ old('description') }}</textarea>
             </div> 

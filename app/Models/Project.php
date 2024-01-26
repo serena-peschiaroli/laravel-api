@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Project extends Model
 {
     use HasFactory, SoftDeletes;
-    protected $fillable= ['title', 'description', 'slug', 'repository_url' ];
+    protected $fillable= ['title', 'description', 'slug', 'repository_url', 'type_id' ];
     //mutaator
     public function setTitleAttribute($_title){
         $this->attributes['title'] = $_title;

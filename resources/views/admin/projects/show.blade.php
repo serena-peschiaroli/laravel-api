@@ -12,7 +12,7 @@
         <div class="col-12 justify-content-center">
             <div class="card text-center">
                 <h2 class="card-title"> {{ $project->title}}</h2>
-                <h3 class="card-title"> {{$project->type ? $post->type->name : 'Nessuna tipologia presente'}}</h3>
+                <h3 class="card-title"> {{$project->type ? $project->type->name : 'Nessuna tipologia presente'}}</h3>
                 <h6 class="card-subtitle mb-2 text-muted">{{$project->repository_url}}</h6>
                 <div class="card-body">
                     <p class="card-text">{{$project->description}}.</p>
