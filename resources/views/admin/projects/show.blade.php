@@ -17,6 +17,20 @@
                 <div class="card-body">
                     <p class="card-text">{{$project->description}}.</p>
                 </div>    
+                <div class="card-body">
+                   
+                    @if($project->technologies->isNotEmpty())
+                        <h3>Tecnologie usate:</h3>
+                        <ul>
+                            @foreach($project->technologies as $technology)
+                                <li class="badge" style="background-color: {{$technology->color}}">{{ $technology->name }}</li>
+                            @endforeach
+                        </ul>
+                    @else
+                        <p>Nessuna tecnologia specificata</p>
+                    @endif
+
+                </div>
             </div>
             <div class="btn-wrapper">
                 <a href="{{route('admin.projects.index')}}" class="btn btn-primary">Indietro</a>

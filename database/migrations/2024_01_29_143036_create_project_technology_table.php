@@ -19,8 +19,9 @@ return new class extends Migration
             $table->unsignedBigInteger('technology_id');
             $table->timestamps();
 
-            $table->foreign('project_id')->references('id')->on('projects')->nullOnDelete();
-            $table->foreign('technology_id')->references('id')->on('technologies')->nullOnDelete();
+            $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
+            $table->foreign('technology_id')->references('id')->on('technologies')->onDelete('cascade');
+            $table->unique(['project_id', 'technology_id']);
         });
     }
 
@@ -31,6 +32,10 @@ return new class extends Migration
      */
     public function down()
     {
+        Schema::table('project_technology', function(Blueprint $table){
+            $table->dropForeign(['project_id']);
+            $table->dropForeign(['technology_id']);
+        });
         Schema::dropIfExists('project_technology');
     }
 };
