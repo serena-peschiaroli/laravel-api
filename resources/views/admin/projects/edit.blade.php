@@ -37,6 +37,16 @@
                 </select>
 
             </div>
+            <div class="mb-3">
+                @foreach ($technologies as $tech)
+                {{-- se ci sono errori, controlla se l'old continiene l'id di tech. se non ci sono errori, controlla se tech è associata a progetto usando contains --}}
+                <div class="form-check">
+                    <input @checked($errors->any() ? in_array($tech->id, old('technologies', [])) : $project->technologies->contains($tech)) type="checkbox" name="technologies[]" id="tech{{$tech->id}}" value="{{$tech->id}}" class="form-check-input">
+                    <label for="tech-{{$tech->id}}"> {{$tech->name}}</label>
+                </div>
+                    
+                @endforeach
+            </div>
             <button type="submit" class="btn btn-success">Salve le modifiche</button>
         </form>
         
