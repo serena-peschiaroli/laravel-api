@@ -67,6 +67,11 @@
                                     href="{{ route('admin.projects.index') }}"> Projects
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.technologies.index' ? 'bg-secondary' : '' }}"
+                                    href="{{ route('admin.technologies.index') }}"> Technologies 
+                                </a>
+                            </li>
                         </ul>
 
 
