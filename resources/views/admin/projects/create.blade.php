@@ -36,6 +36,17 @@
                 <label for="description" class="form-label">Descrizione</label>
                 <textarea class="form-control" id="description" rows="3" name="description">{{ old('description') }}</textarea>
             </div> 
+            <div>
+                @foreach ($technologies as $tech)
+                <div class="form-check">
+                    <input @checked(in_array($tech->id, old('technologies', []))) class="form-check-input" type="checkbox" name="technologies[]" id="tech{{$tech->id}}" value="{{$tech->id}}">
+                    <label class="form-check-label" for="tech{{$tech->id}}">
+                       {{$tech->name}}
+                    </label>
+                </div>
+                    
+                @endforeach
+            </div>
             <button type="submit" class="btn btn-success">Invia</button>
         </form>
         

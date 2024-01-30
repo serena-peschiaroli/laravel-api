@@ -7,6 +7,7 @@ use App\Models\Type;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProjectStoreRequest;
 use App\Http\Requests\ProjectUpdateRequest;
+use App\Models\Technology;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -31,7 +32,8 @@ class ProjectController extends Controller
     public function create()
     {
         $types = Type::all();
-        return view('admin.projects.create', compact('types'));
+        $technologies = Technology::all();
+        return view('admin.projects.create', compact('types', 'technologies'));
     }
 
     /**
@@ -47,6 +49,12 @@ class ProjectController extends Controller
         $project = new Project();
         $project->fill($form_input);
         $project->save();
+
+        //associare technology
+
+        if ($request->has('technologies')) {
+            $project->technologies()->attach($request->technologies);
+        }
 
         return redirect()->route('admin.projects.show', ['project' => $project->slug])->with('message', 'Record creato correttamente');
     }

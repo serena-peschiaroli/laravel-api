@@ -28,7 +28,8 @@ class ProjectStoreRequest extends FormRequest
             'title' => ['required', 'max:255', 'unique:projects'],
             'description' => ['nullable'],
             'repository_url' => 'nullable|url',
-            'type_id' => ['nullable', 'numeric', 'exists:types,id']
+            'type_id' => ['nullable', 'numeric', 'exists:types,id'],
+            'technology_id' => ['exist:technology,id']
         ];
     }
 
