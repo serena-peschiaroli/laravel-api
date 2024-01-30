@@ -5,7 +5,8 @@
     <div class="container">
         <div class="row">
             <div class="col-6">
-                <table class="table table-striped">
+                <a href="{{route('admin.technologies.create')}}" class="btn btn-success mt-5"> Crea nuova categoria</a>
+                <table class="table table-striped mt-3">
                     <thead>
                         <tr>
                             <th scope="col"> id</th>

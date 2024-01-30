@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\TechnologyStoreRequest;
 use App\Models\Technology;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpKernel\Debug\VirtualRequestStack;
 
 class TechnologyController extends Controller
 {
@@ -26,7 +29,7 @@ class TechnologyController extends Controller
      */
     public function create()
     {
-        //
+        return View('admin.technologies.create');
     }
 
     /**
@@ -35,9 +38,14 @@ class TechnologyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TechnologyStoreRequest $request)
     {
-        //
+        $form_input = $request->validated();
+        $technology = new Technology();
+        $technology->fill($form_input);
+        $technology->save();
+
+        return redirect()->route('admin.technologies.show', ['technology'=> $technology->slug]);
     }
 
     /**
