@@ -45,7 +45,9 @@ class TechnologyController extends Controller
         $technology->fill($form_input);
         $technology->save();
 
-        return redirect()->route('admin.technologies.show', ['technology'=> $technology->slug]);
+        return redirect()->route('admin.technologies.show', ['technology' => $technology->slug])
+            ->with('message', 'Nuova tecnologia inserita');
+
     }
 
     /**
